@@ -1,0 +1,113 @@
+.custom-navbar {
+  display: flex;
+  /* justify-content */
+  align-items: center;
+  width: 100%;
+}
+
+.heading {
+  text-transform: lowercase;
+  color: #939393;
+  font-weight: 200;
+}
+
+.heading b {
+  text-transform: uppercase;
+  color: black;
+  font-weight: 900;
+}
+
+.nav-link-section{
+  display: flex;
+  justify-content:space-evenly
+}
+
+.custom-nav-link {
+  list-style: none;
+  cursor: pointer;
+  color: #939393;
+  margin-inline: 20px;
+}
+
+.nav-link :active {
+  font-weight: 500;
+  column-gap: #000000;
+}  
+  
+  
+  .coach{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  .seat-row{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    list-style: none;
+  }
+
+  .seats{
+    border:3px solid #F42536;
+    margin: 0 5px;
+  }
+
+  .seats-booked{
+    background-color: #F42536;
+    margin: 0 5px;
+    color: #fff;
+  }
+
+  .modal-content {
+    background-color: unset !important;
+    background-clip: unset !important;
+    border: unset !important;
+    border-radius: unset !important;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+ .seat-form{
+  width: 450px;
+  box-shadow: 0px 6px 18px 0px rgba(16, 5, 54, 0.17);
+  padding-block: 25px;
+  padding-inline: 25px;
+  /* padding-bottom: 50px; */
+  border-radius: 10px;
+  background-color: white;
+  color: #1C4980;
+ }
+
+ .seat-form-content-title{
+  text-align: center;
+ }
+ .seat-form-content input.form-control {
+padding: 10px;
+background: #fff;
+ }
+
+ .seat-form-content label{
+  font-size: 1.2rem;
+  padding: 0 0;
+  font-weight: 400;
+  margin-bottom: 12px;
+ }
+
+  .submitbtn{
+    /* display: flex; */
+    /* justify-content: center; */
+  background-color: #1C4980;
+  font-weight: 600;
+  padding: 8px 0px;
+  margin-block: 10px;
+  border-radius: 10px;
+
+ }
+
+ .submitbtn .btn {
+  color: #fff;
+ }
