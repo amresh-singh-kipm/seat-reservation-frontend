@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { config } from "../../utils/constantApi";
 
-function BookSeat({ openModal, setOpenModal, seatList, setSeatList,setBookedSeat }) {
+function BookSeat({
+  openModal,
+  setOpenModal,
+  seatList,
+  setSeatList,
+  setBookedSeat,
+}) {
+  //state to input to book seats
   const [seat, setSeat] = useState({ book: "" });
-  
+  const [error, setError] = useState("");
   // function to book seats
   const bookTicket = (e, seat) => {
     e.preventDefault();
-    console.log(seat);
     fetch(`${config.host}${config.seats.bookSeat}/:available`, {
       method: "POST",
       headers: config.headers,
@@ -17,15 +23,26 @@ function BookSeat({ openModal, setOpenModal, seatList, setSeatList,setBookedSeat
       .then((resp) => resp.json())
       .then((resp) => {
         if (resp.status === "SUCCESS") {
-          setBookedSeat(resp.bookedSeat)
-          setOpenModal(false);
-          setSeat({ book: "" });
+          //storing data of booked seats
+          setBookedSeat(resp.bookedSeat);
+
+          //closing modal after successfully seat booking
+          closeModal();
           setSeatList(!seatList);
+        } else {
+          setError(resp.message);
         }
       })
       .catch((err) => console.log(err));
   };
-  console.log(seat);
+
+  //function to close modal
+  const closeModal = () => {
+    setOpenModal(false);
+    setSeat({ book: "" });
+    setError("");
+  };
+  //input onchange function
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -33,7 +50,7 @@ function BookSeat({ openModal, setOpenModal, seatList, setSeatList,setBookedSeat
   };
 
   return (
-    <Modal show={openModal} onHide={() => setOpenModal(false)}>
+    <Modal show={openModal} onHide={() => closeModal()}>
       <div className="seat-form">
         <div className="seat-form-content">
           <h3 className="seat-form-content-title">Book Seat</h3>
@@ -51,6 +68,18 @@ function BookSeat({ openModal, setOpenModal, seatList, setSeatList,setBookedSeat
                     className="form-control"
                     placeholder="Enter the amount of seat"
                   />
+                </div>
+              </div>
+              <div className="col-lg-12">
+                <div className="d-grid mt-4">
+                  {error && (
+                    <span
+                      className="alert alert-danger "
+                      style={{ fontSize: "15px", textAlign: "center" }}
+                    >
+                      {error}
+                    </span>
+                  )}
                 </div>
               </div>
 

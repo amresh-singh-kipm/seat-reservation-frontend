@@ -3,7 +3,11 @@ import BookSeat from "../pages/SeatBooking/BookSeatModal";
 import { config } from "../utils/constantApi";
 
 function Navbar({seatList, setSeatList,setBookedSeat }) {
+
+  //state to open and close model
   const [openModal, setOpenModal] = useState(false);
+
+  //function to reset seat staus
   const resetAll = () => {
     fetch(`${config.host}${config.seats.resetSeat}`, {
       method: "POST",
@@ -25,13 +29,13 @@ function Navbar({seatList, setSeatList,setBookedSeat }) {
           </h3>
         </div>
         <ul className="nav-link-section">
-          {/* <li className="custom-nav-link">Home</li> */}
           <li className="custom-nav-link" onClick={() => setOpenModal(true)}>
             Book
           </li>
           <li className="custom-nav-link" onClick={resetAll}>
             ResetSeat
           </li>
+          {/* Modal to take input to book seat */}
           <BookSeat openModal={openModal} seatList={seatList} setOpenModal={setOpenModal} setSeatList={setSeatList} setBookedSeat={setBookedSeat}/>
         </ul>
       </nav>
