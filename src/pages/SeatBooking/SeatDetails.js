@@ -2,30 +2,39 @@ import { config } from "../../utils/constantApi";
 import "./seatBooking.css";
 import React, { useEffect, useState } from "react";
 // eslint-disable-next-line
-// import seatDetail from "../SeatBooking/seat.json";
 
-function SeatDetails({seatList}) {
-  console.log(seatList)
+function SeatDetails({ seatList, bookedSeat }) {
   // eslint-disable-next-line
   const [seatDetail, setSeatDetail] = useState();
   function seatBookStatus() {
     return fetch(`${config.host}${config.seats.getSeat}`)
-    .then((resp) => resp.json())
-    .then((resp) => setSeatDetail(resp.seats))
-    .catch((error) => console.log(error));
+      .then((resp) => resp.json())
+      .then((resp) => setSeatDetail(resp.seats))
+      .catch((error) => console.log(error));
   }
 
   useEffect(() => {
-    seatBookStatus()
-    // fetch(`${config.host}${config.seats.getSeat}`)
-    //   .then((resp) => resp.json())
-    //   .then((resp) => setSeatDetail(resp.seats))
-    //   .catch((error) => console.log(error));
+    seatBookStatus();
+
     // eslint-disable-next-line
   }, [seatList]);
-// console.log(seatDetail)
+
   return (
     <div className="coach">
+      {bookedSeat ? (
+        <ul className="booked-seat-wrapper">
+          <li className="booked-seat">Booked seat are:</li>
+          {bookedSeat &&
+            bookedSeat.map((seat, index) => {
+              return (
+                <li key={index} className="booked-seat">
+                  {seat.seatNumber}
+                </li>
+              );
+            })}
+        </ul>
+      ) : null}
+
       {seatDetail?.seatInRow?.map((seat, index) => {
         return (
           <ul className="seat-row" key={index}>
@@ -51,7 +60,6 @@ function SeatDetails({seatList}) {
           </ul>
         );
       })}
-     
     </div>
   );
 }

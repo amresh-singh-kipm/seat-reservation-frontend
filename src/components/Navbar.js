@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BookSeat from "../pages/SeatBooking/BookSeatModal";
 import { config } from "../utils/constantApi";
 
-function Navbar({seatList, setSeatList }) {
+function Navbar({seatList, setSeatList,setBookedSeat }) {
   const [openModal, setOpenModal] = useState(false);
   const resetAll = () => {
     fetch(`${config.host}${config.seats.resetSeat}`, {
@@ -32,7 +32,7 @@ function Navbar({seatList, setSeatList }) {
           <li className="custom-nav-link" onClick={resetAll}>
             ResetSeat
           </li>
-          <BookSeat openModal={openModal} seatList={seatList} setOpenModal={setOpenModal} setSeatList={setSeatList} />
+          <BookSeat openModal={openModal} seatList={seatList} setOpenModal={setOpenModal} setSeatList={setSeatList} setBookedSeat={setBookedSeat}/>
         </ul>
       </nav>
     </div>

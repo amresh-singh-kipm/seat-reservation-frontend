@@ -1,4 +1,4 @@
-const BASE_URL = `http://localhost:5051`;
+const BASE_URL = `http://localhost:5050/api`;
 
 export const config = {
   host: BASE_URL,

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { config } from "../../utils/constantApi";
 
-function BookSeat({ openModal, setOpenModal, seatList, setSeatList }) {
+function BookSeat({ openModal, setOpenModal, seatList, setSeatList,setBookedSeat }) {
   const [seat, setSeat] = useState({ book: "" });
+  
   // function to book seats
   const bookTicket = (e, seat) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ function BookSeat({ openModal, setOpenModal, seatList, setSeatList }) {
       .then((resp) => resp.json())
       .then((resp) => {
         if (resp.status === "SUCCESS") {
+          setBookedSeat(resp.bookedSeat)
           setOpenModal(false);
           setSeat({ book: "" });
           setSeatList(!seatList);

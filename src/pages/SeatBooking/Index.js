@@ -2,11 +2,11 @@ import React from "react";
 import BookSeat from "./BookSeatModal";
 import SeatDetails from "./SeatDetails";
 
-function Index({ seatList, setSeatList }) {
+function Index({ seatList,bookedSeat }) {
   return (
     <>
-      <BookSeat setSeatList={setSeatList} />
-      <SeatDetails seatList={seatList} />
+      <BookSeat />
+      <SeatDetails seatList={seatList} bookedSeat = {bookedSeat} />
     </>
   );
 }
