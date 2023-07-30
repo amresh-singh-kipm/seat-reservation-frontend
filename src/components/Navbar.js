@@ -20,6 +20,10 @@ function Navbar({seatList, setSeatList,setBookedSeat }) {
       })
       .catch((err) => console.log(err));
   };
+  const modelOpen = ()=>{
+    setOpenModal(true)
+    setBookedSeat("")
+  }
   return (
     <div className="fliud-container">
       <nav className="custom-navbar">
@@ -29,7 +33,7 @@ function Navbar({seatList, setSeatList,setBookedSeat }) {
           </h3>
         </div>
         <ul className="nav-link-section">
-          <li className="custom-nav-link" onClick={() => setOpenModal(true)}>
+          <li className="custom-nav-link" onClick={() =>modelOpen() }>
             Book
           </li>
           <li className="custom-nav-link" onClick={resetAll}>
