@@ -1,4 +1,4 @@
-const BASE_URL = `http://localhost:5050/api`;
+const BASE_URL = `https://fuzzy-gray-goat.cyclic.app/api`;
 
 export const config = {
   host: BASE_URL,
