@@ -18,7 +18,7 @@ function App() {
         setBookedSeat={setBookedSeat}
       />
       <h2>Train Ticket Booking Application</h2>
-      <Index seatList={seatList} bookedSeat={bookedSeat} />
+      <Index  seatList={seatList} bookedSeat={bookedSeat} />
     </div>
   );
 }

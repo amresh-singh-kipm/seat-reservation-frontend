@@ -4,10 +4,10 @@ import SeatDetails from "./SeatDetails";
 
 function Index({ seatList,bookedSeat }) {
   return (
-    <>
+    <React.Fragment>
       <BookSeat />
-      <SeatDetails seatList={seatList} bookedSeat = {bookedSeat} />
-    </>
+      <SeatDetails seatList={seatList} bookedSeat={bookedSeat}/>
+    </React.Fragment>
   );
 }
 

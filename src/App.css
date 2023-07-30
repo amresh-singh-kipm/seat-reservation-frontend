@@ -2,10 +2,13 @@
   /* text-align: center;
   display: flex;
   flex-direction: column; */
-  margin-block: 25px;
+  background-color: #61dafb;
+padding-block: 15px;
 }
 .App h2{
    text-align: center;
+   margin-top: 10px;
+   margin-bottom: 20px;
 }
 
 .App-logo {

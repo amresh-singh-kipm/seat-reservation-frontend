@@ -21,7 +21,7 @@ function Navbar({seatList, setSeatList,setBookedSeat }) {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="container">
+    <div className="fliud-container">
       <nav className="custom-navbar">
         <div className="navbar-heading">
           <h3 className="heading">
