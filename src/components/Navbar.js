@@ -1,14 +1,16 @@
+import './Navbar.css'
 import React, { useState } from "react";
 import BookSeat from "../pages/SeatBooking/BookSeatModal";
 import { config } from "../utils/constantApi";
 
-function Navbar({seatList, setSeatList,setBookedSeat }) {
+function Navbar({seatList, setSeatList,setBookedSeat,setIsLoading }) {
 
   //state to open and close model
   const [openModal, setOpenModal] = useState(false);
 
   //function to reset seat staus
   const resetAll = () => {
+    setIsLoading(true)
     fetch(`${config.host}${config.seats.resetSeat}`, {
       method: "POST",
       headers: config.headers,
@@ -17,6 +19,7 @@ function Navbar({seatList, setSeatList,setBookedSeat }) {
       .then((resp) => resp.json())
       .then((resp) => {
         setSeatList(!seatList);
+        setIsLoading(false)
       })
       .catch((err) => console.log(err));
   };

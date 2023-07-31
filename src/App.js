@@ -10,15 +10,19 @@ function App() {
   //state to store the data of booked seat
   const [bookedSeat, setBookedSeat] = useState("");
 
+    //state to display loader
+    const [isLoading,setIsLoading] = useState(false)
+
   return (
     <div className="App">
       <Navbar
         seatList={seatList}
         setSeatList={setSeatList}
         setBookedSeat={setBookedSeat}
+        setIsLoading={setIsLoading}
       />
       <h2>Train Ticket Booking Application</h2>
-      <Index  seatList={seatList} bookedSeat={bookedSeat} />
+      <Index  seatList={seatList} bookedSeat={bookedSeat} isLoading={isLoading} setIsLoading={setIsLoading} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
-const BASE_URL = `https://fuzzy-gray-goat.cyclic.app/api`;
+// const BASE_URL = `https://fuzzy-gray-goat.cyclic.app/api`;
 // const BASE_URL = 'http://localhost:5050/api'
+const BASE_URL = `https://seat-reservation-backend-production-92f6.up.railway.app/api`
 
 export const config = {
   host: BASE_URL,
@@ -13,3 +14,5 @@ export const config = {
     Accept: "application/json",
   },
 };
+
+
