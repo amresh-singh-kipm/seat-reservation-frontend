@@ -4,9 +4,10 @@ import "./seatBooking.css";
 import React, { useEffect, useState } from "react";
 // eslint-disable-next-line
 
-function SeatDetails({ seatList, bookedSeat, isLoading, setIsLoading }) {
+function SeatDetails({ seatList, bookedSeat }) {
   // eslint-disable-next-line
 
+  const [isLoading, setIsLoading] = useState(true);
   //state to display seat
   const [seatDetail, setSeatDetail] = useState();
 
@@ -59,28 +60,36 @@ function SeatDetails({ seatList, bookedSeat, isLoading, setIsLoading }) {
         seatDetail?.seatInRow?.map((seat, index) => {
           return (
             <ul className="seat-row" key={index}>
-              <li className="row-number">{seatContain} - {seatContain+(seatDetail.seatInRow.length-1===index ? 2:6)}</li>
+              <li className="row-number-container">
+                <span className="row-number">
+                  {seatContain} -{" "}
+                  {seatContain +
+                    (seatDetail.seatInRow.length - 1 === index ? 2 : 6)}
+                </span>
+              </li>
               {seat?.map((seats, index) => {
                 return seats.status ? (
                   <li className="seats" key={index}>
-                    <img
-                      src="/assets/images/reserve seat.png"
-                      alt="booked"
+                    <span
                       title={seats.seatNumber}
-                    />
+                      className="material-symbols-outlined booked-seats"
+                    >
+                      chair
+                    </span>
                   </li>
                 ) : (
                   <li className="seats" key={index}>
-                    <img
-                      src="/assets/images/available seat.jpeg"
+                    <span
                       title={seats.seatNumber}
-                      alt="available"
-                    />
+                      className="material-symbols-outlined "
+                    >
+                      chair
+                    </span>
                   </li>
                 );
               })}
-              <div style={{display:"none"}}>
-              {(seatContain = seatContain+seat.length)}
+              <div style={{ display: "none" }}>
+                {(seatContain = seatContain + seat.length)}
               </div>
             </ul>
           );
